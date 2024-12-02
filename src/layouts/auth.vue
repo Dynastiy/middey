@@ -5,7 +5,7 @@
     >
       <div class="left-side flex-1 h-full items-center bg-primary p-6 rounded-xl justify-center lg:flex md:flex hidden">
         <div class="text-center text-white">
-          <img src="@/assets/BrandImg/middey-logo-white.png" class="mx-auto mb-3 w-64" alt="" />
+          <img src="@/assets/brandImg/middey-logo-white.png" class="mx-auto mb-3 w-64" alt="" />
           <h5>Explore banking with Middey</h5>
           <hr class="w-3/12 border-2 mx-auto my-2" />
           <h5>Welcome to the future of banking with Middey.</h5>
