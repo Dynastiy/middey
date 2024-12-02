@@ -1,7 +1,7 @@
 <template>
   <div class="app-drawer py-6 w-[250px] fixed bg-white h-[90vh] top-0 left-0">
     <ul class="flex flex-col gap-3 h-full">
-      <img src="@/assets/BrandImg/middey_horizontal.png" class="mx-auto mb-6 block w-36" alt="" />
+      <img src="@/assets/brandImg/middey_horizontal.png" class="mx-auto mb-6 block w-36" alt="" />
       <div class="flex flex-1 flex-col justify-between h-full">
         <div class="flex flex-col gap-1">
           <sp-menu

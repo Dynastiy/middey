@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <img src="@/assets/BrandImg/placeholder.jpeg" class="w-16 h-16 mx-auto my-4 rounded-full" alt="">
+        <img src="@/assets/brandImg/placeholder.jpeg" class="w-16 h-16 mx-auto my-4 rounded-full" alt="">
       <h5 class="font-semibold text-center">Welcome back, Chief</h5>
       <h6
         class="text-center font-regular text-grayText text-[11px]"
