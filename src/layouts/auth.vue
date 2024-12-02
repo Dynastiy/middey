@@ -17,7 +17,7 @@
         :class="'rounded-xl bg-white lg:p-8 md:p-6 p-0 lg:w-6/12 md:w-6/12 w-full flex lg:items-center md:items-center lg:justify-center md:justify-center h-full'"
       >
         <div class="w-full">
-          <img src="@/assets/BrandImg/middey-logo-colored.png" class="mx-auto mb-4 lg:hidden md:hidden block w-36" alt="" />
+          <img src="@/assets/brandImg/middey-logo-colored.png" class="mx-auto mb-4 lg:hidden md:hidden block w-36" alt="" />
           <slot />
         </div>
       </div>
