@@ -1,0 +1,108 @@
+.btn-brand {
+    @apply bg-primaryColor text-white px-[10px] py-[15px] rounded-[12px] text-[16px] w-full  font-semibold
+}
+
+.btn-brand-rounded {
+    @apply bg-secondaryColor text-white px-[10px] py-[15px] rounded-[12px] text-[16px] w-full font-semibold
+}
+
+.btn-light-border {
+    @apply border-gray4 text-gray4 border-[1px] px-[10px] py-[15px] rounded-[12px] text-[13px] w-full font-semibold
+}
+
+.btn-border {
+    @apply border-gray4 text-gray4 bg-neutral-100 border w-full px-[10px] py-[15px] rounded-[12px] text-[13px] w-full font-semibold
+}
+
+.rounded-number {
+    @apply bg-primary text-white rounded-full h-[20px] w-[20px] p-1 flex items-center justify-center
+}
+
+/* INPUT  */
+.input-field {
+    border-width: 1px;
+    border-color: var(---gray2);
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    /* gap: 5px; */
+    font-size: 15px;
+    padding-left: 14px;
+    padding-right: 14px;
+    align-items: center;
+    /* background: var(--gray-100) !important; */
+    border-radius: 12px;
+}
+
+.input-field.error {
+    border-color: var(--error) !important;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 14px 0;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.input-field input::placeholder, .input::placeholder {
+    color: var(---gray2);
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.input-field .form-icon {
+    color: var(--gray-500);
+    font-size: 20px;
+}
+
+.input-field .form-icon {
+    color: var(--gray-400);
+}
+
+.select,
+.input {
+    width: 100%;
+    padding: 14px 10px;
+    font-weight: 400;
+    outline: none;
+    /* background-color: var(--gray-100) !important; */
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: var(---gray2);
+    background-color: transparent;
+    font-size: 15px;
+}
+
+form label {
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(---gray2);
+}
+
+input[type=radio] {
+    accent-color: var(---primary-700);
+}
+
+/* N Progress  */
+#nprogress .bar {
+    height: 4px;
+    background: var(--primary-color);
+}
+
+#nprogress .spinner-icon {
+    border-top-color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--secondary-color);
+}
+
