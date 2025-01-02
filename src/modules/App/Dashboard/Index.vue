@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col gap-4">
-    <span v-if="user.user_kyc_level < 2" class="text-sm bg-red-100 p-2 rounded-sm text-red-600 border border-red-200">
+    <span
+      v-if="user.user_kyc_level < 2"
+      class="text-sm bg-red-100 p-2 rounded-sm text-red-600 border border-red-200"
+    >
       Hello <b>{{ user.first_name }}</b
       >, to finalize the process of opening your account & have your Middey Account allocated for
       receiving of funds, click on the link to get started. -
@@ -21,16 +24,16 @@
         </div>
       </template>
       <template #default>
-        <div
-          class="flex lg:flex-row md:flex-row flex-col justify-between lg:items-end md:items-end gap-4"
-        >
-          <div>
-            <span class="font-bold text-4xl">{{ wallet.wallet_balance_formatted }}</span>
+        <div class="flex lg:flex-row md:flex-row flex-col gap-3">
+          <div
+            class="lg:w-1/3 md:w-1/3 w-full wallet rounded-[5px] h-[220px] flex flex-col justify-between"
+          >
+            <span class="font-bold text-white text-4xl">{{ wallet.wallet_balance_formatted }}</span>
             <span v-if="user.account_details_for_deposit_default">
-              <span class="text-xs block font-semibold">{{
+              <span class="text-sm text-white block font-semibold">{{
                 user.account_details_for_deposit_default.account_number
               }}</span>
-              <span class="text-xs block text-primary font-semibold">
+              <span class="text-sm block text-white font-semibold">
                 {{
                   `${user.account_details_for_deposit_default.account_name} (${user.account_details_for_deposit_default.account_bank})`
                 }}</span
@@ -47,24 +50,32 @@
               >
             </span>
           </div>
-          <div class="flex lg:w-fit md:w-fit w-full gap-2">
+          <div class="grid grid-cols-2 flex-1 lg:w-fit md:w-fit w-full gap-3">
             <span
               role="button"
-              class="border w-full whitespace-nowrap border-primary flex items-center gap-1 bg-secondary text-white rounded-[5px] px-2 py-[8px] text-[12px] capitalize font-sembold"
+              :class="['w-full flex flex-col lg:bg-white font-semibold rounded-[5px] p-3 text-[12px] capitalize font-sembold', mobileStyles]"
               v-for="item in actions"
               :key="item.label"
               @click="openSendFunds"
             >
               <i-icon
                 :icon="item.icon"
-                class="bg-white block text-primary rounded-full text-lg p-[2px]"
+                class="bg-primary block text-white rounded-full text-3xl p-[4px]"
               />
-              {{ item.label.split('_').join(' ') }}</span
-            >
+              <h5 class="font-semibold text-[13px]">{{ item.label.split('_').join(' ') }}</h5>
+              <h6 class="font-regular text-gray-500 whitespace-wrap">
+                {{ item.desc }}
+                <span v-if="item.label == 'payroll'" class="text-red-500 italic"
+                  >(Coming Soon)</span
+                >
+              </h6>
+            </span>
           </div>
         </div>
       </template>
     </el-skeleton>
+
+    <!-- Modal  -->
     <div>
       <div class="flex justify-between items-center mb-4">
         <h4 class="font-semibold text-lg">Recent Transaction History</h4>
@@ -138,11 +149,29 @@ export default {
   data() {
     return {
       actions: [
-        { label: 'send', icon: 'mingcute:send-fill', action: this.openSendFunds() },
-        { label: 'receive', icon: 'flowbite:download-solid' },
-        { label: 'pay_bills', icon: 'fluent:payment-32-filled' },
-        { label: 'payroll', icon: 'clarity:list-solid' }
+        {
+          label: 'send',
+          icon: 'mingcute:send-fill',
+          action: this.openSendFunds(),
+          desc: ' Send Money to any bank at low rate '
+        },
+        {
+          label: 'receive',
+          icon: 'flowbite:download-solid',
+          desc: 'Receive Money to any bank at low rate '
+        },
+        {
+          label: 'pay_bills',
+          icon: 'fluent:payment-32-filled',
+          desc: 'Airtime/Data, Electricity Recharge and DSTV subscription '
+        },
+        {
+          label: 'payroll',
+          icon: 'clarity:list-solid',
+          desc: "Automate payment of worker's salary and pension."
+        }
       ],
+      mobileStyles: 'sm:first:bg-blue-100  sm:[&:nth-child(2)]:bg-green-100 sm:[&:nth-child(3)]:bg-amber-100 sm:[&:nth-child(4)]:bg-gray-200',
       cardColors: [],
       columns: [
         {
@@ -240,4 +269,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.wallet {
+  background: url('@/assets/img/wallet-bg.jpeg');
+  padding: 20px;
+  background-size: cover;
+}
+</style>
