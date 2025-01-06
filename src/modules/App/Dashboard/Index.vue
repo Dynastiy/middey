@@ -26,7 +26,7 @@
       <template #default>
         <div class="flex lg:flex-row md:flex-row flex-col gap-3">
           <div
-            class="lg:w-1/3 md:w-1/3 w-full wallet rounded-[5px] h-[220px] flex flex-col justify-between"
+            class="lg:w-1/3 md:w-1/3 w-full wallet rounded-[5px] h-[max] flex flex-col justify-between"
           >
             <span class="font-bold text-white text-4xl">{{ wallet.wallet_balance_formatted }}</span>
             <span v-if="user.account_details_for_deposit_default">
@@ -43,7 +43,7 @@
               <span class="text-xs block font-semibold">Account Details</span>
               <span
                 @click="openModal"
-                class="text-xs block text-primary font-semibold underline"
+                class="text-xs block text-white font-semibold underline"
                 role="button"
               >
                 View account Number</span
@@ -53,7 +53,11 @@
           <div class="grid grid-cols-2 flex-1 lg:w-fit md:w-fit w-full gap-3">
             <span
               role="button"
-              :class="['w-full flex flex-col lg:bg-white font-semibold rounded-[5px] p-3 text-[12px] capitalize font-sembold', mobileStyles]"
+              :class="[
+                'w-full flex flex-col font-semibold rounded-[5px] p-3 text-[12px] capitalize font-sembold',
+                mobileStyles,
+                desktopStyles
+              ]"
               v-for="item in actions"
               :key="item.label"
               @click="openSendFunds"
@@ -63,7 +67,7 @@
                 class="bg-primary block text-white rounded-full text-3xl p-[4px]"
               />
               <h5 class="font-semibold text-[13px]">{{ item.label.split('_').join(' ') }}</h5>
-              <h6 class="font-regular text-gray-500 whitespace-wrap">
+              <h6 class="font-medium text-[11px] text-gray-500 whitespace-wrap">
                 {{ item.desc }}
                 <span v-if="item.label == 'payroll'" class="text-red-500 italic"
                   >(Coming Soon)</span
@@ -171,7 +175,10 @@ export default {
           desc: "Automate payment of worker's salary and pension."
         }
       ],
-      mobileStyles: 'sm:first:bg-blue-100  sm:[&:nth-child(2)]:bg-green-100 sm:[&:nth-child(3)]:bg-amber-100 sm:[&:nth-child(4)]:bg-gray-200',
+      mobileStyles:
+        'first:bg-blue-100  [&:nth-child(2)]:bg-green-100 [&:nth-child(3)]:bg-amber-100 [&:nth-child(4)]:bg-gray-200',
+      desktopStyles:
+        'lg:first:bg-white md:first:bg-white  lg:[&:nth-child(2)]:bg-white md:[&:nth-child(2)]:bg-white lg:[&:nth-child(3)]:bg-white md:[&:nth-child(3)]:bg-white lg:[&:nth-child(4)]:bg-white md:[&:nth-child(4)]:bg-white',
       cardColors: [],
       columns: [
         {

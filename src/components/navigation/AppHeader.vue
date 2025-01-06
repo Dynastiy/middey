@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="flex bg-white px-6 py-4 justify-between items-center">
+    <div class="flex bg-white px-4 py-4 justify-between items-center">
       <img src="@/assets/brandImg/middey_horizontal.png" class="block lg:hidden md:hidden h-8" alt="" />
       <div class="hidden lg:flex md:flex justify-center flex-col">
         <h4 class="font-bold text-[18px] capitalize">{{ routeHeader.split('_').join(' ') }}</h4>
         <h6 class="text-xs text-[#848C9D]">{{ routeDescription }}</h6>
       </div>
-      <div class="flex gap-[10px] items-center px-4">
+      <div class="flex gap-[10px] lg:items-center md:items-center lg:px-4 md:px-4">
         <img src="@/assets/brandImg/placeholder.jpeg" class="w-8 h-8 rounded-full" alt="" />
         <div class="hidden lg:block md:block">
           <h5 class="font-bold capitalize mb-0 text-[16px]">

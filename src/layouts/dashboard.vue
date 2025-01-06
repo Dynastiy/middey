@@ -3,7 +3,7 @@
     <div class="min-h-screen bg-gray-100 lg:ml-[250px] md:ml-[250px]">
       <app-header class="sticky top-0 z-10" />
       <drawer-nav class="hidden lg:block md:block" :menu="menu" />
-      <div class="p-6 lg:mb-6 md:mb-6 mb-16">
+      <div class="p-4 lg:mb-6 md:mb-6 mb-16">
         <div class="lg:hidden md:hidden flex justify-center flex-col mb-4">
           <h4 class="font-bold text-[18px] capitalize">
             {{
@@ -57,6 +57,12 @@ export default {
           icon: 'lucide:file-text',
           isBottom: false,
           href: '/app/transactions'
+        },
+        {
+          label: 'wallet',
+          icon: 'solar:wallet-outline',
+          href: '/app/wallet',
+          isBottom: false
         },
         {
           label: 'pay_merchant',
@@ -116,20 +122,18 @@ export default {
           isFunction: false
         },
         {
-          label: 'KYC/compliance',
+          label: 'wallet',
+          icon: 'solar:wallet-outline',
+          href: '/app/wallet',
+          isFunction: false
+        },
+        {
+          label: 'KYC',
           icon: 'lucide:file-text',
           href: '/app/kyc'
         },
-
         {
-          label: 'profile&settings',
-          icon: 'lucide:user',
-          href: '/app/profile-and-settings',
-          isFunction: false
-        },
-
-        {
-          label: 'menu',
+          label: 'More',
           icon: 'gg:menu-round',
           href: '/app/profile-and-settings',
           isFunction: true

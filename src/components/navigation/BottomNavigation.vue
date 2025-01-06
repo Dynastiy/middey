@@ -1,13 +1,13 @@
 <template>
   <div>
     <div
-      class="fixed rounded-tr-[15px] bottom-nav px-6 h-[70px] rounded-tl-[15px] w-full bottom-0 sm:z-0"
+      class="fixed rounded-tr-[15px] bottom-nav px-4 h-[70px] rounded-tl-[15px] w-full bottom-0 sm:z-0"
     >
       <div class="flex justify-between h-full w-full items-center">
         <ul class="flex items-center w-full justify-between h-full mb-0 relative">
           <li
             v-for="(item, idx) in menu"
-            :class="{ 'text-mainBlue': item.label == routeName }"
+            :class="{ 'text-mainBlue font-semibold': item.label == routeName }"
             :key="idx"
           >
             <span
