@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-3">
+  <div class="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-3">
     <div class="bg-white rounded-md p-4 border border-gray50" v-for="(item, idx) in currencies" :key="idx">
       <div class="wallet-page-header mb-4 flex items-center justify-between">
         <span class="flex gap-2">

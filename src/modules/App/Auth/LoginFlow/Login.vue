@@ -1,19 +1,10 @@
 <template>
   <div class="">
     <h5 class="font-bold lg:text-3xl md:text-3xl text-2xl">Sign In</h5>
-    <h6
-      class="font-regular text-grayText text-[13px]"
-      v-text="'Enter your details to Login'"
-    ></h6>
+    <h6 class="font-regular text-grayText text-[13px]" v-text="'Enter your details to Login'"></h6>
     <vForm @submit="onSubmit" v-slot="{ meta }" class="flex flex-col gap-3 mt-8">
       <div>
-        <vField
-          name="identifier"
-          class="input"
-          placeholder="Email"
-          type="text"
-          rules="required"
-        />
+        <vField name="identifier" class="input" placeholder="Email" type="text" rules="required" />
         <ErrorMessage name="identifier" class="text-xs text-error"></ErrorMessage>
       </div>
 
@@ -56,7 +47,8 @@
                 : 'bg-gray400 text-gray600'
           ]"
         >
-          Sign In
+          <i-icon v-if="isLoading" icon="eos-icons:three-dots-loading" width="30px" />
+          <span v-else class="font-semibold"> Sign In </span>
         </button>
       </div>
       <div class="mt-3">
@@ -72,7 +64,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -82,8 +73,8 @@ export default {
   },
 
   methods: {
-   async onSubmit(values) {
-    this.isLoading = true
+    async onSubmit(values) {
+      this.isLoading = true
       // this.$router.push('/login/secret-pin')
       let payload = {
         user_email: values.identifier,
@@ -93,37 +84,34 @@ export default {
         let req = await this.$auth.login(payload)
         // console.log(req)
         let accessToken = req.data.access_token
-          // Encrypt the token
-          localStorage.setItem('_middey_user_token', this.$encryptToken(accessToken))
-          let token = this.$encryptToken(accessToken)
-          let userData = req.data
-          this.getUser(token, userData)
+        // Encrypt the token
+        localStorage.setItem('_middey_user_token', this.$encryptToken(accessToken))
+        let token = this.$encryptToken(accessToken)
+        let userData = req.data
+        this.getUser(token, userData)
       } catch (error) {
         return error
-      }
-      finally {
+      } finally {
         this.isLoading = false
       }
     },
 
-    getUser(token, userData){
+    getUser(token, userData) {
       let payload = {
         user_id: userData.user_id
       }
-      this.$user.profile(payload)
-      .then((res)=> {
+      this.$user.profile(payload).then((res) => {
         let userInfo = res.data
         this.$store.commit('auth/login', {
-            user: userInfo,
-            token
-          })
-          const route = this.$route.query.redirect || '/'
-          console.log(route);
-          
-          this.$router.push(route)
+          user: userInfo,
+          token
+        })
+        const route = this.$route.query.redirect || '/'
+        console.log(route)
+
+        this.$router.push(route)
       })
     }
-
   }
 }
 </script>
