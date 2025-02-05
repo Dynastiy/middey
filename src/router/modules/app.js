@@ -1,14 +1,17 @@
-import BillPayment from '@/modules/App/Dashboard/BillPayment.vue'
-import Contact from '@/modules/App/Dashboard/Contact.vue'
+import BillPayment from '@/modules/App/Dashboard/bill-payment.vue'
+import Contact from '@/modules/App/Dashboard/contact.vue'
 import Home from '@/modules/App/Dashboard/Index.vue'
-import KYC from '@/modules/App/Dashboard/KYC.vue'
-import Payments from '@/modules/App/Dashboard/Payments.vue'
-import Paymerchant from '@/modules/App/Dashboard/Paymerchant.vue'
-import ProfileAndSettings from '@/modules/App/Dashboard/ProfileAndSettings.vue'
-import Trade from '@/modules/App/Dashboard/Trade.vue'
-import Transactions from '@/modules/App/Dashboard/Transactions.vue'
-import VirtualCards from '@/modules/App/Dashboard/VirtualCards.vue'
-import Wallet from '@/modules/App/Dashboard/Wallet.vue'
+import KYC from '@/modules/App/Dashboard/kyc.vue'
+import Payments from '@/modules/App/Dashboard/payments.vue'
+import Paymerchant from '@/modules/App/Dashboard/pay-merchant.vue'
+import ProfileAndSettings from '@/modules/App/Dashboard/profile-and-settings.vue'
+import Trade from '@/modules/App/Dashboard/trade.vue'
+import Transactions from '@/modules/App/Dashboard/transactions.vue'
+import VirtualCards from '@/modules/App/Dashboard/virtual-cards.vue'
+import Wallet from '@/modules/App/Dashboard/wallet.vue'
+import CreatePaymentLink from '@/modules/App/Dashboard/dashboard/create-payment-link.vue'
+import CreatedLink from '@/modules/App/Dashboard/dashboard/created-link.vue'
+import Swap from '@/modules/App/Dashboard/wallet/swap.vue'
 
 const routes = [
   {
@@ -32,10 +35,24 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "Your Wallets",
+      header: "Wallets",
       description: "Send and recieve money with ease within and outside Middey",
       parent: 'wallet',
       name: 'wallet'
+    }
+  },
+
+  {
+    path: '/app/swap',
+    name: 'swap',
+    component: Swap,
+    meta: {
+      layout: 'Dashboard',
+      requiresAuth: true,
+      header: "swap",
+      description: "Get help from Middey administrators",
+      parent: 'wallet',
+      name: 'swap'
     }
   },
 
@@ -88,7 +105,7 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "transaction_history",
+      header: "transaction-history",
       description: "Send and recieve money with ease within and outside Middey",
       parent: 'transactions',
       name: 'transactions'
@@ -102,7 +119,7 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "profile_&_settings",
+      header: "profile-&-settings",
       description: "Some Necessary information needed and minor tweaks to your account",
       parent: 'home',
       name: 'profile&settings'
@@ -116,7 +133,7 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "pay_merchant",
+      header: "pay-merchant",
       description: "Make payments to merchants on the Middey",
       parent: 'pay_merchant',
       name: 'pay_merchant'
@@ -130,7 +147,7 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "bill_payment",
+      header: "bill_-payment",
       description: "Pay for bills",
       parent: 'bill_payment',
       name: 'bill_payment'
@@ -144,7 +161,7 @@ const routes = [
     meta: {
       layout: 'Dashboard',
       requiresAuth: true,
-      header: "virtual_cards",
+      header: "virtual-cards",
       description: "Your virtual Card Settings",
       parent: 'virtual_cards',
       name: 'virtual_cards'
@@ -165,6 +182,33 @@ const routes = [
     }
   },
 
+  {
+    path: '/app/create-payment-link',
+    name: 'create-payment-link',
+    component: CreatePaymentLink,
+    meta: {
+      layout: 'Dashboard',
+      requiresAuth: true,
+      header: "create-payment-link",
+      description: "Get help from Middey administrators",
+      parent: 'home',
+      name: 'create-payment-link'
+    }
+  },
+
+  {
+    path: '/app/link-created',
+    name: 'link-created',
+    component: CreatedLink,
+    meta: {
+      layout: 'Dashboard',
+      requiresAuth: true,
+      header: "payment-link",
+      description: "Get help from Middey administrators",
+      parent: 'home',
+      name: 'link-created'
+    }
+  },
  
 ]
 

@@ -11,7 +11,7 @@ module.exports = {
         primary: 'var(---primary-color)',
         mainBlue: 'var(---main-blue)',
         secondary: 'var(---secondary-color)',
-        accent: 'var(---accent-color)',
+        accent: 'var(---accent)',
         deep: 'var(---deep-color)',
         borderBg: 'var(---border-color)',
         borderInput: 'var(---borderInput)',

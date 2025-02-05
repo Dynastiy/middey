@@ -19,24 +19,24 @@
         </span>
       </div>
       <div class="main-content flex justify-between">
-        <span class="flex flex-col items-center">
+        <router-link to="/app/receive" class="flex flex-col items-center">
           <Icon icon="ci:arrow-down-lg" />
           <span class="text-[12px] text-gray500 block font-medium"> Deposit </span>
-        </span>
+        </router-link>
 
         <span class="block bg-gray300 w-[1px]"></span>
 
-        <span class="flex flex-col items-center">
+        <router-link to="/app/withdraw" class="flex flex-col items-center">
           <Icon icon="ci:arrow-up-lg" />
           <span class="text-[12px] text-gray500 block font-medium">Withdraw</span>
-        </span>
+        </router-link>
 
         <span class="block bg-gray300 w-[1px]"></span>
 
-        <span class="flex flex-col items-center">
+        <router-link to="/app/swap" class="flex flex-col items-center">
           <Icon icon="heroicons-outline:switch-vertical" />
           <span class="text-[12px] text-gray500 block font-medium">Swap</span>
-        </span>
+        </router-link>
       </div>
     </div>
   </div>

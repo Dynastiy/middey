@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100 lg:ml-[250px] md:ml-[250px]">
+    <div class="min-h-screen bg-gray-50 lg:ml-[250px] md:ml-[250px]">
       <app-header class="sticky top-0 z-10" />
       <drawer-nav class="hidden lg:block md:block" :menu="menu" />
-      <div class="p-4 lg:mb-6 md:mb-6 mb-16">
+      <div class="p-4 md:pb-4 pb-20">
         <div class="lg:hidden md:hidden flex justify-center flex-col mb-4">
-          <h4 class="font-bold text-[18px] capitalize">
+          <h4 class="font-medium text-[18px] capitalize">
             {{
-              routeName !== 'home' ? routeHeader.split('_').join(' ') : `Howdy, ${user.first_name}`
+              routeName !== 'home' ? routeHeader.split('-').join(' ') : `Hi, ${user.first_name} ${user.last_name}`
             }}
           </h4>
-          <h6 class="text-xs text-[#848C9D]">{{ routeDescription }}</h6>
+          <!-- <h6 class="text-xs text-[#848C9D]">{{ routeDescription }}</h6> -->
         </div>
         <slot />
       </div>
@@ -23,8 +23,10 @@
       />
 
       <div class="lg:hidden md:hidden block">
-        <Sidebar v-model:visible="visible" header="" position="right">
-          <drawer-nav :menu="menu" @closeMenu="closeMenu" />
+        <Sidebar blockScroll v-model:visible="visible" header="" position="right">
+          <template #container="{ closeCallback }">
+            <drawer-nav :menu="menu" @closeMenu="closeCallback" />
+          </template>
         </Sidebar>
       </div>
     </div>
@@ -35,6 +37,7 @@
 import AppHeader from '@/components/navigation/AppHeader.vue'
 import DrawerNav from '@/components/navigation/DrawerNav.vue'
 import BottomNavigation from '@/components/navigation/BottomNavigation.vue'
+
 export default {
   components: { AppHeader, DrawerNav, BottomNavigation },
   data() {
@@ -64,30 +67,30 @@ export default {
           href: '/app/wallet',
           isBottom: false
         },
-        {
-          label: 'pay_merchant',
-          icon: 'streamline:bill-2',
-          isBottom: false,
-          href: '/app/pay-merchant'
-        },
-        {
-          label: 'bill_payment',
-          icon: 'ic:outline-payments',
-          isBottom: false,
-          href: '/app/bill-payment'
-        },
-        {
-          label: 'virtual_cards',
-          icon: 'lucide:credit-card',
-          isBottom: false,
-          href: '/app/virtual-cards'
-        },
-        {
-          label: 'investments',
-          icon: 'streamline:investment-selection',
-          isBottom: false,
-          href: '/app/investments'
-        },
+        // {
+        //   label: 'pay_merchant',
+        //   icon: 'streamline:bill-2',
+        //   isBottom: false,
+        //   href: '/app/pay-merchant'
+        // },
+        // {
+        //   label: 'bill_payment',
+        //   icon: 'ic:outline-payments',
+        //   isBottom: false,
+        //   href: '/app/bill-payment'
+        // },
+        // {
+        //   label: 'virtual_cards',
+        //   icon: 'lucide:credit-card',
+        //   isBottom: false,
+        //   href: '/app/virtual-cards'
+        // },
+        // {
+        //   label: 'investments',
+        //   icon: 'streamline:investment-selection',
+        //   isBottom: false,
+        //   href: '/app/investments'
+        // },
         {
           label: 'profile&settings',
           icon: 'lucide:user',

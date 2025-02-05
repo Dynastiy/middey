@@ -77,12 +77,12 @@
     font-size: 15px;
 }
 
-form label {
+/* form label {
     margin-bottom: 2px;
     font-size: 15px;
-    font-weight: 400;
-    color: var(---gray2);
-}
+    font-weight: 500;
+    color: #1F2937;
+} */
 
 input[type=radio] {
     accent-color: var(---primary-700);

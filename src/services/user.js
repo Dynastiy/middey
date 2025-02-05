@@ -2,8 +2,7 @@ import $request from '@/axios/index'
 // import { catchAxiosError, catchAxiosSuccess } from './response'
 import { catchAxiosError } from './response'
 
-export default {
-  async profile(params) {
+  export const profile = async (params) => {
     try {
       let res = await $request.get(`wp-json/rimplenet/v1/users`, { params })
     //   catchAxiosSuccess(res)
@@ -12,9 +11,9 @@ export default {
       catchAxiosError(error)
       throw error
     }
-  },
+  }
 
-  async transactions(params) {
+  export const transactions = async (params) => {
     try {
       let res = await $request.get(`wp-json/rimplenet/v1/transactions`, { params })
     //   catchAxiosSuccess(res)
@@ -23,9 +22,9 @@ export default {
       catchAxiosError(error)
       throw error
     }
-  },
+  }
 
-  async balances(params) {
+  export const balances = async (params) => {
     try {
       let res = await $request.get(`wp-json/rimplenet/v1/user-wallet-balance`, { params })
     //   catchAxiosSuccess(res)
@@ -34,7 +33,4 @@ export default {
       catchAxiosError(error)
       throw error
     }
-  },
-
-//   https://backend.middey.com/wp-json/rimplenet/v1/user-wallet-balance?user_id=47&wallet_id=ngn
-}
+  }

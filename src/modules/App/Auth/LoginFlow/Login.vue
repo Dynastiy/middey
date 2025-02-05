@@ -63,56 +63,56 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      isLoading: false,
-      typePassword: true
-    }
-  },
+<script setup>
+import { ref } from 'vue'
+import { encryptToken } from '@/plugins/filters'
+import { useRouter, useRoute } from 'vue-router'
+import { profile } from '@/services/user'
+import { login } from '@/services/auth'
+import store from '@/store'
 
-  methods: {
-    async onSubmit(values) {
-      this.isLoading = true
-      // this.$router.push('/login/secret-pin')
-      let payload = {
-        user_email: values.identifier,
-        user_password: values.password
-      }
-      try {
-        let req = await this.$auth.login(payload)
-        // console.log(req)
-        let accessToken = req.data.access_token
-        // Encrypt the token
-        localStorage.setItem('_middey_user_token', this.$encryptToken(accessToken))
-        let token = this.$encryptToken(accessToken)
-        let userData = req.data
-        this.getUser(token, userData)
-      } catch (error) {
-        return error
-      } finally {
-        this.isLoading = false
-      }
-    },
+const router = useRouter()
+const route = useRoute()
 
-    getUser(token, userData) {
-      let payload = {
-        user_id: userData.user_id
-      }
-      this.$user.profile(payload).then((res) => {
-        let userInfo = res.data
-        this.$store.commit('auth/login', {
-          user: userInfo,
-          token
-        })
-        const route = this.$route.query.redirect || '/'
-        console.log(route)
+const isLoading = ref(false)
+const typePassword = ref(true)
 
-        this.$router.push(route)
-      })
-    }
+const onSubmit = async (values) => {
+  isLoading.value = true
+  // this.$router.push('/login/secret-pin')
+  let payload = {
+    user_email: values.identifier,
+    user_password: values.password
   }
+  try {
+    let req = await login(payload)
+    // console.log(req)
+    let accessToken = req.data.access_token
+    // Encrypt the token
+    let token = encryptToken(accessToken)
+    localStorage.setItem('_middey_user_token', token)
+    let userData = req.data
+    getUser(token, userData)
+  } catch (error) {
+    return error
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const getUser = async (token, userData) => {
+  let payload = {
+    user_id: userData.user_id
+  }
+  profile(payload).then((res) => {
+    let userInfo = res.data
+    store.commit('auth/login', {
+      user: userInfo,
+      token
+    })
+    const redirectURL = route.query.redirect || '/'
+    router.push(redirectURL)
+  })
 }
 </script>
 

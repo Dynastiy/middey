@@ -191,12 +191,6 @@ import 'vue-toastification/dist/index.css'
 import Tooltip from 'primevue/tooltip';
 app.directive('tooltip', Tooltip);
 
-import { services } from '@/services/services'
-// Register all services globally
-Object.keys(services).forEach((key) => {
-  app.config.globalProperties[`$${key}`] = services[key]
-})
-
 // app.use(Toast, options);
 app.use(Toast)
 
